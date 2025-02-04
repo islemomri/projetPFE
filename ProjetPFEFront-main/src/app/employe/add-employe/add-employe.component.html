@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Employé</title>
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="center">
+        <p-card class="card">
+            <div class="header">
+                <h1>Ajouter un Employé</h1>
+            </div>
+            <form [formGroup]="addEmployeeForm" (ngSubmit)="onSubmit()">
+
+
+                <div class="grid">
+                    <div class="col-6">
+                        <div class="field">
+                            <p-floatlabel variant="on">
+                                <input pInputText id="Nom" formControlName="Nom" class="form-control"  readonly/>
+                                <label for="Nom">Nom</label>
+                            </p-floatlabel>
+                            <span
+                                *ngIf="addEmployeeForm.controls['Nom'].invalid && addEmployeeForm.controls['Nom'].touched"
+                                class="block p-error">
+                                Nom est requis.
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Prénom -->
+                    <div class="col-6">
+                        <div class="field">
+                            <p-floatlabel variant="on">
+                                <input pInputText id="Prenom" formControlName="Prenom" class="form-control" readonly />
+                                <label for="Prenom">Prénom</label>
+                            </p-floatlabel>
+                            <span
+                                *ngIf="addEmployeeForm.controls['Prenom'].invalid && addEmployeeForm.controls['Prenom'].touched"
+                                class="block p-error">
+                                Prénom est requis.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="col-6">
+                        <div class="field">
+                            <p-floatlabel variant="on">
+                                <input pInputText type="number" id="matricule" formControlName="matricule" readonly/>
+                                <label for="age">Matricule</label>
+                            </p-floatlabel>
+                            <span
+                                *ngIf="addEmployeeForm.controls['matricule'].invalid && addEmployeeForm.controls['matricule'].touched"
+                                class="block p-error">
+                                Matricule est requis.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="field">
+                            <p-floatlabel variant="on">
+                                <input pInputText id="Departement" formControlName="Departement" />
+                                <label for="Departement">Département</label>
+                            </p-floatlabel>
+                            <span
+                                *ngIf="addEmployeeForm.controls['Departement'].invalid && addEmployeeForm.controls['Departement'].touched"
+                                class="block p-error">
+                                Departement est requis.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="grid">
+                    <div class="col-6">
+                        <div class="field">
+                            <p-floatlabel>
+                                <input pInputText type="date" id="dN" formControlName="dN" class="form-control"
+                                    required />
+                                <label for="dN">Date de Naissance</label>
+                            </p-floatlabel>
+                            <span
+                                *ngIf="addEmployeeForm.controls['dN'].invalid && addEmployeeForm.controls['dN'].touched"
+                                class="block p-error">
+                                Date de Naissance est requis.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="field">
+                            <p-floatlabel>
+                                <input pInputText type="date" id="dR" formControlName="dR" class="form-control"
+                                    required />
+                                <label for="dR">Date de Recrutement</label>
+                            </p-floatlabel>
+                            <span
+                                *ngIf="addEmployeeForm.controls['dR'].invalid && addEmployeeForm.controls['dR'].touched"
+                                class="block p-error">
+                                Date de Recrutement est requis.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="grid">
+                    <div class="col-6">
+                        <!-- Email -->
+                        <div class="field">
+                            <p-floatlabel variant="on">
+                                <input type="email" id="email" formControlName="email" />
+                                <label for="email">Email</label>
+                            </p-floatlabel>
+
+                            <span
+                                *ngIf="addEmployeeForm.controls['email'].hasError('required') && addEmployeeForm.controls['email'].touched"
+                                class="block p-error">
+                                Email est requis.
+                            </span>
+                            <span
+                                *ngIf="addEmployeeForm.controls['email'].hasError('email') && addEmployeeForm.controls['email'].touched"
+                                class="block p-error">
+                                Email invalide.
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <!-- Poste Actuel -->
+                        <div class="field">
+                            <p-floatlabel variant="on">
+                                <input pInputText id="Poste" formControlName="Poste" />
+                                <label for="Poste">Poste Actuel</label>
+                            </p-floatlabel>
+                            <span
+                                *ngIf="addEmployeeForm.controls['Poste'].invalid && addEmployeeForm.controls['Poste'].touched"
+                                class="block p-error">
+                                Poste est requis.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="col-6">
+                        <div class="field">
+                            <p-select [options]="sexes" [(ngModel)]="selectedSexe" optionLabel="name"
+                                placeholder="Sélectionner un Sexe" class="w-full md:w-56"
+                                [formControlName]="'sexe'"></p-select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+
+
+                        <p-floatlabel variant="on">
+                            <input pInputText id="Prenom" formControlName="lieudenaissance" class="form-control" readonly />
+                            <label for="Prenom">lieudenaissance</label>
+                        </p-floatlabel>
+                        
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="col-3">
+
+                        <p-floatlabel variant="on">
+                            <input pInputText type="text" id="code" formControlName="code" />
+                            <label for="code">Code Qualification</label>
+                        </p-floatlabel>
+
+                        <span
+                            *ngIf="addEmployeeForm.controls['code'].invalid && addEmployeeForm.controls['code'].touched"
+                            class="block p-error">
+                            code est requis.
+                        </span>
+                    </div>
+                    <div class="col-9">
+                        <p-floatlabel variant="on">
+                            <input pInputText type="text" id="description" formControlName="description" />
+                            <label for="description">Description</label>
+                        </p-floatlabel>
+                        <span
+                            *ngIf="addEmployeeForm.controls['description'].invalid && addEmployeeForm.controls['description'].touched"
+                            class="block p-error ">
+                            description est requis.
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="field">
+                    <p-fileupload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" #fileUpload
+                        [multiple]="false" accept="image/*" maxFileSize="1000000" mode="advanced"
+                        (onSelect)="onSelectedFiles($event)">
+
+                        <ng-template #empty>
+                            <div>Drag and drop files to here to upload.</div>
+                        </ng-template>
+
+                        <ng-template #content>
+                            <ul *ngIf="uploadedFiles.length">
+                                <li *ngFor="let file of uploadedFiles">
+                                    {{ file.name }} - {{ formatSize(file.size) }}
+                                </li>
+                            </ul>
+                        </ng-template>
+                    </p-fileupload>
+
+                    <!-- Message d'erreur -->
+                    <span
+                        *ngIf="addEmployeeForm.controls['Telecharger'].invalid && addEmployeeForm.controls['Telecharger'].touched"
+                        class="block p-error">
+                        Le fichier est requis.
+                    </span>
+                </div>
+
+
+                <button type="submit"
+                    [disabled]="addEmployeeForm.invalid || !addEmployeeForm.controls['Telecharger'].value"
+                    class="btn btn-submit">
+                    Ajouter l'Employé
+                </button>
+
+            </form>
+        </p-card>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+    </div>
+
+
+    <!-- Notification Success -->
+    <div class="notifications-container" *ngIf="showSuccessAlert">
+        <div class="success">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <svg class="succes-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                        aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <div class="success-prompt-wrap">
+                    <p class="success-prompt-heading">Employé ajouté avec succès</p>
+                    <div class="success-prompt-prompt">
+                        <p>L'employé a été ajouté avec succès. Félicitations !</p>
+                    </div>
+                    <div class="success-button-container">
+
+                        <button (click)="dismissAlert(fileUpload)">Fermer l'alerte</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+    </div>
+
+
+</body>
+
+</html>

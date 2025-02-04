@@ -1,0 +1,98 @@
+<div>
+    <h2>Liste des employés</h2>
+
+  
+    <!-- Table with Search -->
+    <p-table
+      #dt
+      [value]="employes"
+      [rows]="10"
+      [paginator]="true"
+      [globalFilterFields]="['nom', 'prenom', 'matricule']"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      [(selection)]="selectedEmployees"
+      [rowHover]="true"
+      dataKey="matricule"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [showCurrentPageReport]="true"
+
+    >
+      <ng-template #caption>
+        <div class="flex items-center justify-between">
+          
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">
+              <i class="pi pi-search"></i>
+            </span>
+            <input
+              pInputText
+              type="text"
+              [(ngModel)]="globalFilter"
+              (input)="dt.filterGlobal(globalFilter, 'contains')"
+              placeholder="Rechercher un employé..."
+            />
+          </div>
+          
+        </div>
+      </ng-template>
+  
+      <!-- Table Headers and Body -->
+      <ng-template #header>
+        <tr>
+          <th style="width: 3rem">
+            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+          </th>
+          <th pSortableColumn="matricule">
+            Matricule <p-sortIcon field="matricule"></p-sortIcon>
+          </th>
+          <th pSortableColumn="nom">
+            Nom <p-sortIcon field="nom"></p-sortIcon>
+          </th>
+          <th pSortableColumn="prenom">
+            Prénom <p-sortIcon field="prenom"></p-sortIcon>
+          </th>
+          <th pSortableColumn="lieuDeNaissance">
+            lieu de naissance <p-sortIcon field="lieuDeNaissance"></p-sortIcon>
+          </th>
+          
+          <th style="min-width: 12rem">Actions</th>
+        </tr>
+      </ng-template>
+  
+      <ng-template #body let-employe>
+        <tr (click)="goToEditEmployee(employe)" style="cursor: pointer;">
+    
+          <td style="width: 3rem">
+            <p-tableCheckbox [value]="employe"></p-tableCheckbox>
+          </td>
+          <td>{{ employe.matricule }}</td>
+          <td>{{ employe.nom }}</td>
+          <td>{{ employe.prenom }}</td>
+          <td>{{ employe.lieuDeNaissance }}</td>
+          <td>
+            <p-button
+              icon="pi pi-pencil"
+              class="mr-2"
+              [rounded]="true"
+              [outlined]="true"
+              (click)="editEmployee(employe)  ; $event.stopPropagation()"
+            />
+            <p-button
+              icon="pi pi-trash"
+              severity="danger"
+              [rounded]="true"
+              [outlined]="true"
+              (click)="deleteEmployee(employe); $event.stopPropagation()"
+            />
+          </td>
+        </tr>
+      </ng-template>
+  
+      <ng-template #summary>
+        <div class="flex items-center justify-between">
+          Total employés : {{ employes ? employes.length : 0 }}.
+        </div>
+      </ng-template>
+    </p-table>
+  </div>
+  

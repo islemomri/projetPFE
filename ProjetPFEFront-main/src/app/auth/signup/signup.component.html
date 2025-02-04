@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Bibliothèque d'icônes -->
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the external CSS file -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un compte</title>
+</head>
+<body>
+    <div class="center">
+        <p-card class="card">
+            <div class="header">
+                
+                <h1>Créer un compte</h1>
+            </div>
+            <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+                <div class="field">
+                    <p-floatlabel variant="on">
+                        <input pInputText id="name" formControlName="nom" name="nom" class="form-control" />
+                        <label for="name">Nom</label>
+                    </p-floatlabel>
+                    <span *ngIf="registerForm.controls.nom.invalid && (registerForm.controls.nom.dirty || registerForm.controls.nom.touched)" class="block p-error">
+                        <div *ngIf="registerForm.controls.nom.errors?.['required']">*Nom est obligatoire</div>
+                    </span>
+                </div>
+                <div class="field">
+                    <p-floatlabel variant="on">
+                        <input pInputText id="prenom" formControlName="prenom" name="prenom" class="form-control" />
+                        <label for="prenom">Prénom</label>
+                    </p-floatlabel>
+                    <span *ngIf="registerForm.controls.prenom.invalid && (registerForm.controls.prenom.dirty || registerForm.controls.prenom.touched)" class="block p-error">
+                        <div *ngIf="registerForm.controls.prenom.errors?.['required']">*Prénom est obligatoire</div>
+                    </span>
+                </div>
+                <div class="field">
+                    <p-floatlabel variant="on">
+                        <input pInputText type="email" id="email" formControlName="email" class="form-control" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"/>
+                        <label for="email">Email</label>
+                    </p-floatlabel>
+                    <span *ngIf="registerForm.controls.email.invalid && (registerForm.controls.email.dirty || registerForm.controls.email.touched)" class="block p-error">
+                        <div *ngIf="registerForm.controls.email.errors?.['required']">*Email est obligatoire</div>
+                        <div *ngIf="registerForm.controls.email.errors?.['email']">Email invalide</div>
+                    </span>
+                </div>
+                <div class="field">
+                    <p-floatlabel variant="on">
+                        <input pInputText type="password" id="password" formControlName="password" class="form-control"/>
+                        <label for="password">Mot de passe</label>
+                    </p-floatlabel>
+                    <span *ngIf="registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched)" class="block p-error">
+                        <div *ngIf="registerForm.controls.password.errors?.['required']">*Mot de passe requis</div>
+                        <div *ngIf="registerForm.controls.password.errors?.['minlength']">Le mot de passe doit avoir au moins 8 caractères</div>
+                    </span>
+                </div>
+                <div class="field">
+                    <p-floatlabel variant="on">
+                        <input pInputText type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" />
+                        <label for="confirmPassword">Confirmer mot de passe</label>
+                    </p-floatlabel>
+                    <span *ngIf="registerForm.controls.confirmPassword.invalid && (registerForm.controls.confirmPassword.dirty || registerForm.controls.confirmPassword.touched)" class="block p-error">
+                        <div *ngIf="registerForm.controls.confirmPassword.errors?.['required']">Confirmer le mot de passe</div>
+                        <div *ngIf="registerForm.controls.confirmPassword.errors?.['passwordMismatch']">Les mots de passe ne correspondent pas</div>
+                    </span>
+                </div>
+                <button type="submit" class="btn btn-login" [disabled]="registerForm.invalid">Valider</button>
+                <p class="login-link">Vous avez déjà un compte ? <a routerLink="/login">Se connecter</a></p>
+                <div class="divider">
+                    <hr class="divider-line">
+                    <span class="divider-text">or</span>
+                    <hr class="divider-line">
+                </div>
+                
+            </form>
+        </p-card>
+    </div>
+</body>
+</html>

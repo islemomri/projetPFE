@@ -1,0 +1,117 @@
+/* Appliquer un fond blanc à l'ensemble de la page */
+body {
+    background-color: #f8f9fa; /* Légèrement gris pour un contraste doux */
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Conteneur principal */
+  div {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Titre */
+  h2 {
+    color: #133E87;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Style de la table */
+  .p-datatable {
+    border: 1px solid #CBDCEB;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  /* En-tête de la table */
+  .p-datatable thead {
+    background: #608BC1;
+    color: white;
+  }
+  
+  .p-datatable th {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  /* Lignes de la table */
+  .p-datatable tbody tr {
+    background: white;
+    transition: background 0.3s ease;
+  }
+  
+  /* Survol des lignes */
+  .p-datatable tbody tr:hover {
+    background: #CBDCEB;
+  }
+  
+ /* 🌟 Conteneur du champ de recherche (plus large et moins haut) */
+.p-inputgroup {
+    background: white;
+    border-radius: 20px;
+    border: 2px solid #608BC1;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    width: 400px; /* 🔹 Augmentation de la largeur */
+    height: 32px; /* 🔹 Réduction de la hauteur */
+    margin-left: 0; /* 🔹 Alignement à gauche */
+    display: flex;
+    align-items: center;
+}
+
+/* 🌟 Effet au focus */
+.p-inputgroup:focus-within {
+    border-color: #133E87;
+    box-shadow: 0 0 8px rgba(19, 62, 135, 0.3);
+}
+
+/* 🌟 Icône de recherche */
+.p-inputgroup-addon {
+    border-radius: 20px;
+    background: #608BC1;
+    color: white;
+    padding: 7px; /* 🔹 Réduction du padding */
+    border-right: 2px solid #CBDCEB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 🌟 Input de recherche */
+.p-inputtext {
+    flex: 1;
+    padding: 7px; /* 🔹 Réduction du padding */
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #133E87;
+    transition: all 0.3s ease-in-out;
+    height: 100%; /* 🔹 Adaptation automatique à la hauteur du conteneur */
+}
+
+/* 🌟 Placeholder amélioré */
+.p-inputtext::placeholder {
+    color: #608BC1;
+    opacity: 0.7;
+    font-size: 13px;
+}
+
+/* 🌟 Effet de focus sur l'input */
+.p-inputtext:focus {
+    background-color: #f0f5ff;
+}
+
+  /* Boutons */
+  .p-button {
+    background: #133E87 !important;
+    color: white !important;
+    border-radius: 5px !important;
+  }
+  
+  .p-button.p-button-danger {
+    background: #d9534f !important; /* Rouge pour la suppression */
+  }
+  
